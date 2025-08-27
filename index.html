@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KhiproPad - ক্ষিপ্র টেক্সট এডিটর</title>
+    <link rel="icon" type="image/x-icon" href="/img/khipro-favicon.ico">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        // Light mode colors
+                        'primary': '#497b59',
+                        'primary-light': '#7fb892',
+                        'primary-dark': '#5f9472',
+                        'header-dark': '#497b59',
+                        'secondary': '#eaddcf',
+                        'light': '#fdfbf8',
+                        'dark-text': '#2d2d2d',
+                        'accent': '#d4a373',
+
+                        // Dark mode colors
+                        'dark': '#1a1f1d',
+                        'dark-primary': '#8bc9a0',
+                        'dark-primary-light': '#a5d4b5',
+                        'dark-primary-dark': '#7fb892',
+                        'dark-header-dark': '#497b59',
+                        'dark-secondary': '#2a2f2d',
+                        'dark-light': '#242924',
+                        'dark-text-light': '#f5f5f5',
+                        'dark-accent': '#d4a373',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body class="antialiased bg-light text-dark-text dark:bg-dark dark:text-dark-text-light">
+    <script>
+        // Theme initialization
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (!('theme' in localStorage)) {
+                if (event.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+    </script>
+
+    <!-- Header -->
+    <header class="bg-header-dark dark:bg-dark-header-dark shadow-lg">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <button id="sidebar-toggle" class="md:hidden text-white/90 hover:text-white p-2 rounded-md transition-colors">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <button id="keyboard-toggle" class="text-white/90 hover:text-white p-2 rounded-md transition-colors">
+                        <i class="fas fa-keyboard text-xl"></i>
+                    </button>
+                    <h1 class="text-xl font-bold text-white ml-2">KhiproPad</h1>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <button id="theme-toggle" class="text-white/90 hover:text-white p-2 rounded-md transition-colors">
+                        <i class="fas fa-moon text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden hidden"></div>
+
+    <!-- Main Container -->
+    <div class="flex" style="height: calc(100vh - 64px);">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="w-64 bg-white dark:bg-dark-secondary border-r border-gray-200 dark:border-gray-700 transition-transform duration-300 overflow-hidden flex flex-col">
+            <div class="p-4 flex-1 flex flex-col min-h-0">
+                <div class="flex-1 overflow-y-auto mb-4" style="max-height: calc(100vh - 200px);">
+                    <div id="draft-list" class="space-y-2 mb-4">
+                        <!-- Draft items will be populated here -->
+                    </div>
+                </div>
+                <button id="new-draft" class="w-full bg-primary hover:bg-primary-dark text-white font-medium px-4 py-2 rounded-lg transition-all duration-300">
+                    <i class="fas fa-plus mr-2"></i>New Draft
+                </button>
+            </div>
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+                <a href="https://khiprokeyboard.github.io" target="_blank" rel="noopener noreferrer" class="w-full bg-secondary hover:bg-accent text-dark-text dark:bg-dark-light dark:text-dark-text-light dark:hover:bg-dark-accent font-medium px-4 py-2 rounded-lg transition-all duration-300 flex items-center justify-center">
+                    <i class="fas fa-globe mr-2"></i>ওয়েবসাইট
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Editor Area -->
+        <main class="flex-1 flex flex-col overflow-hidden">
+            <!-- Editor Header (Sticky) -->
+            <div class="bg-white dark:bg-dark-secondary border-b border-gray-200 dark:border-gray-700 px-4 sm:px-6 py-3 sticky top-0 z-10">
+                <!-- Desktop Layout -->
+                <div class="hidden sm:flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <input id="document-title" type="text" placeholder="Untitled Document" 
+                               class="text-lg font-medium bg-transparent border-none outline-none focus:ring-0 text-dark-text dark:text-dark-text-light max-w-xs lg:max-w-md">
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                        <span id="word-count">0 words</span>
+                        <span>•</span>
+                        <span id="char-count">0 characters</span>
+                        <span>•</span>
+                        <span id="last-saved">Auto-saved</span>
+                    </div>
+                </div>
+                
+                <!-- Mobile Layout -->
+                <div class="sm:hidden space-y-2">
+                    <div class="flex items-center">
+                        <input id="document-title-mobile" type="text" placeholder="Untitled Document" 
+                               class="text-lg font-medium bg-transparent border-none outline-none focus:ring-0 text-dark-text dark:text-dark-text-light w-full">
+                    </div>
+                    <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                        <div class="flex items-center gap-2">
+                            <span id="word-count-mobile">0 words</span>
+                            <span>•</span>
+                            <span id="char-count-mobile">0 characters</span>
+                        </div>
+                        <span id="last-saved-mobile">Auto-saved</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Editor -->
+            <div class="flex-1 px-9 py-5 overflow-hidden">
+                <div class="h-full">
+                    <textarea id="editor" 
+                              placeholder="write here"
+                              class="w-full h-full resize-none border-none outline-none bg-transparent text-lg leading-relaxed font-normal text-dark-text dark:text-dark-text-light placeholder-gray-400 dark:placeholder-gray-500"
+                              spellcheck="false"></textarea>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+
+    <script src="assets/js/khipro.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

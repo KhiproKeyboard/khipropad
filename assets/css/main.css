@@ -1,0 +1,197 @@
+/* KhiproPad Custom Styles */
+
+body {
+    font-family: 'Anek Bangla', sans-serif;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #497b59;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5f9472;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #8bc9a0;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #a5d4b5;
+}
+
+/* Editor Specific Styles */
+#editor {
+    font-family: 'Anek Bangla', monospace;
+    line-height: 1.6;
+}
+
+#editor:focus {
+    outline: none;
+}
+
+/* Draft Item Styles */
+.draft-item {
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.draft-item:hover {
+    background-color: rgba(73, 123, 89, 0.1);
+}
+
+.draft-item.active {
+    background-color: rgba(73, 123, 89, 0.15);
+    border-color: #497b59;
+}
+
+.dark .draft-item:hover {
+    background-color: rgba(139, 201, 160, 0.1);
+}
+
+.dark .draft-item.active {
+    background-color: rgba(139, 201, 160, 0.15);
+    border-color: #8bc9a0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    #sidebar {
+        position: fixed;
+        left: 0;
+        top: 64px;
+        bottom: 0;
+        z-index: 30;
+        transform: translateX(-100%);
+    }
+    
+    #sidebar.open {
+        transform: translateX(0);
+    }
+    
+    #mobile-menu.open {
+        display: block;
+    }
+    
+    #mobile-menu.open .menu-panel {
+        transform: translateX(0);
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Focus States */
+.focus-ring:focus {
+    outline: 2px solid #497b59;
+    outline-offset: 2px;
+}
+
+.dark .focus-ring:focus {
+    outline-color: #8bc9a0;
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(73, 123, 89, 0.2), transparent);
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Preview Panel Styles */
+#preview-content {
+    font-family: 'Anek Bangla', serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* Responsive Text Sizing */
+@media (max-width: 640px) {
+    #editor {
+        font-size: 16px;
+    }
+    
+    #preview-content {
+        font-size: 16px;
+    }
+}
+
+/* Selection Styling */
+::selection {
+    background-color: rgba(73, 123, 89, 0.3);
+}
+
+.dark ::selection {
+    background-color: rgba(139, 201, 160, 0.3);
+}
+
+/* Utility Classes */
+.transition-all-300 {
+    transition: all 0.3s ease;
+}
+
+.shadow-soft {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dark .shadow-soft {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}

@@ -84,7 +84,17 @@ class KhiproPadApp {
         if (this.isConverting) return;
         
         const cursorPos = this.editor.selectionStart;
-        const text = this.editor.value;
+        let text = this.editor.value;
+        
+        // Convert uppercase to lowercase for better Khipro conversion
+        const lowercaseText = text.toLowerCase();
+        if (text !== lowercaseText) {
+            // Update textarea with lowercase text
+            this.editor.value = lowercaseText;
+            // Restore cursor position
+            this.editor.setSelectionRange(cursorPos, cursorPos);
+            text = lowercaseText;
+        }
         
         // Update stats
         this.updateStats();

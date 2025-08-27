@@ -1,10 +1,5 @@
 # KhiproPad - ক্ষিপ্র টেক্সট এডিটর
-
-<div align="center">
-  <img src="img/khipro-favicon.ico" alt="KhiproPad Logo" width="64" height="64">
-  <h3>দ্রুততম বাংলা টাইপিংয়ের অভিজ্ঞতা</h3>
-  <p>A modern Bengali text editor with intelligent phonetic typing powered by Khipro keyboard layout</p>
-</div>
+**KhiproPad** is a web-based Bengali text editor built on the **[Khipro phonetic typing system](https://khiprokeyboard.github.io/)**. It lets you type Bangla using Roman letters with real-time conversion, completely shift-free and easy to use.
 
 ## 🌟 Features
 

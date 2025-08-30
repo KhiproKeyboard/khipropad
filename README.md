@@ -1,73 +1,35 @@
-# KhiproPad - ক্ষিপ্র টেক্সট এডিটর
-**KhiproPad** is a web-based Bengali text editor built on the **[Khipro phonetic typing system](https://khiprokeyboard.github.io/)**. It lets you type Bangla using Roman letters with real-time conversion, completely shift-free and easy to use.
+# KhiproPad
 
-## 🌟 Features
+A web-based Bengali text editor using the **[Khipro phonetic typing system](https://khiprokeyboard.github.io/)**. Type Bangla with Roman letters - no Shift key needed!
 
-- **IME-Style Conversion**: Real-time phonetic conversion with live preview
-- **Draft Management**: Create, save, and manage multiple drafts
-- **Dark/Light Theme**: Automatic theme switching with system preference support
-- **Responsive Design**: Works seamlessly on desktop and mobile devices
-- **Auto-Save**: Automatic draft saving with visual feedback
-- **Word Statistics**: Real-time word and character count
-- **Bengali Font Support**: Optimized for Anek Bangla font family
+## ✨ Features
 
-## 🚀 What is Khipro?
+- **Real-time conversion** with live preview
+- **Multiple drafts** with auto-save
+- **Dark/Light themes** 
+- **Mobile-friendly** responsive design
+- **Word count** and statistics
 
-Khipro (ক্ষিপ্র) is a revolutionary Bengali phonetic typing method inspired by Chinese Pinyin. Unlike traditional phonetic keyboards that require frequent Shift key usage, Khipro enables:
+## 🚀 About Khipro
 
-- **Shift-free typing**: No need to use Shift key for any Bengali characters
-- **Maximum speed**: All necessary keys within QWERTY layout reach
-- **Intelligent conversion**: Context-aware phonetic to Bengali conversion
-- **Complete character support**: All Bengali characters, conjuncts, and diacritics
+Khipro (ক্ষিপ্র) is a shift-free Bengali typing method inspired by Chinese Pinyin:
 
-### Key Advantages over Traditional Methods
+- **No Shift key** required for any Bengali character
+- **Faster typing** than traditional phonetic methods
+- **All keys** within QWERTY reach
+- **Smart conversion** with full character support
 
-1. **No Shift Key Usage**: Traditional methods like Avro require Shift for many characters (ঁ requires ^), breaking typing flow
-2. **Accessible Keys**: All required symbols are within easy reach on standard QWERTY layout
-3. **Faster Typing**: Inspired by Chinese Pinyin efficiency, enabling faster Bengali typing than English
-4. **Smart Suggestions**: When combined with typing boosters, provides predictive text capabilities
+For all information about Khipro, visit: **[Khipro Website](https://khiprokeyboard.github.io)**
 
-## 🎯 How KhiproPad Works
+## 🎯 How to Use
 
-KhiproPad implements an IME (Input Method Editor) style conversion system:
+1. **Type** Bengali words using English letters
+2. **See** live conversion preview
+3. **Press Space/Enter** to commit text
+4. **Press Escape** to commit english text
 
-1. **Type in Roman**: Type Bengali words using English characters
-2. **Live Preview**: See real-time conversion preview as you type
-3. **Smart Commit**: Press Space or Enter to commit the converted text
-4. **Escape to Cancel**: Press Escape to cancel current conversion
-
-### Draft Management
-- **Multiple Drafts**: Create and manage multiple documents
-- **Auto-Save**: Automatic saving every 2 seconds
-- **Smart Naming**: Automatic draft numbering and custom titles
-- **Quick Access**: Easy switching between drafts
-
-### Browser Compatibility
-
-- **Modern Browsers**: Chrome, Firefox, Safari, Edge (latest versions)
-- **Mobile Browsers**: iOS Safari, Chrome Mobile, Samsung Internet
-- **Requirements**: JavaScript enabled, modern CSS support
-
-## 🌐 Related Projects
-
-KhiproPad is part of the larger Khipro ecosystem:
-
-- **[Khipro Website](https://khiprokeyboard.github.io)**: Main project website
-- **[Khipro Documentation](https://khiprokeyboard.github.io/docs)**: Comprehensive usage guide
-- **[khipro-m17n](https://github.com/khiprokeyboard/khipro-m17n)**: Linux m17n implementation
-- **[khipro-python](https://github.com/khiprokeyboard/khipro-python)**: Python implementation
-- **[khipro-cpp](https://github.com/khiprokeyboard/khipro-cpp)**: C++ implementation
-
-## 🤝 Contributing
-
-We welcome contributions to improve KhiproPad:
-
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
-3. **Commit changes**: `git commit -m 'Add amazing feature'`
-4. **Push to branch**: `git push origin feature/amazing-feature`
-5. **Open a Pull Request**
+**Drafts**: Auto-saved every 2 seconds, create multiple documents, easy switching
 
 ## 📄 License
 
-This project is part of the Khipro keyboard initiative. Please refer to the main Khipro project for licensing information.
+This project is licensed under the [GNU General Public License v3.0 (GPL-3.0)](LICENSE).
